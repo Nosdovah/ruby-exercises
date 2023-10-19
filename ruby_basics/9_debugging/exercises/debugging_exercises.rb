@@ -4,13 +4,12 @@
 # Once this test fails, have a look at the Stack Trace
 # Try to see if you can work your way from the last line, the bottom of the stack
 # To the top, the first line, where the error occured, and ONLY THEN fix the error
-
 def decrement_smallest_value(nested_array)
   smallest_value = nested_array.flatten.max
   nested_array.each do |array|
     array.each do |current_value|
       if smallest_value > current_value
-        smallest_value = current_valu
+        smallest_value = current_value
       end
     end
   end
@@ -21,9 +20,13 @@ end
 # Don't look at this method prior to running the test
 # Run rspec, let the test fail, and go through the stack trace again
 def increment_greatest_value(nested_array)
-  greatest_value = nested_array.flatten.min
+  #p "isinya nested_array #{nested_array}" =>  [[3,4],[1,2]]
+  greatest_value = nested_array.flatten.min #jadi 1 nilainya
+  #p "greatest_value #{greatest_value}"
   nested_array.each do |array|
+  #p "each nested_array element #{array}"
     array.each do |current_value|
+  #p "inside array do #{current_value}"
       if greatest_value < nil
         greatest_value = current_value
       end
@@ -36,9 +39,15 @@ end
 # Use p and puts in order to find what's wrong with our method
 
 def isogram?(string)
+  #p "isinya string? #{string}"
   original_length = string.length
-  string_array = string.downcase.split
+  #p "panjang string #{original_length}"
+  downcase_string = string.downcase
+  #p "downcase string #{downcase_string}"
+  string_array = downcase_string.chars
+  #p "split downcase string #{string_array}"
   unique_length = string_array.uniq.length
+  #p "panjang buat huruf unique doang #{unique_length}"
   original_length == unique_length
 end
 
@@ -48,9 +57,13 @@ end
 # First, include require 'pry-byebug' at the top of this page
 # Next insert plenty of breakpoints, and see if you can tell where things break
 # Once you find the error, fix it and get the test to pass
+require 'pry-byebug'
 
 def yell_greeting(string)
   name = string
+  binding.pry
   name = name.downcase
+  binding.pry
   greeting = "WASSAP, #{name}!"
+  binding.pry
 end
